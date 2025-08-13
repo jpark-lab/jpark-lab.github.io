@@ -10841,6 +10841,10 @@ body {
   color: #6c757d;
 }
 
+
+.page-wrapper {
+  display: flex;
+}
 .sidebar {
   position: fixed;
   top: 56px; /* Start below the top nav */
@@ -10850,6 +10854,9 @@ body {
   padding: 1rem;
   background-color: #f8f9fa;
   border-right: 1px solid #dee2e6;
+  position: sticky; /* Stick to the top of the viewport */
+  top: 56px; /* Start below the top nav */
+
 }
 
 .sidebar .img-profile {
@@ -10917,8 +10924,8 @@ p.lead {
 }
 
 section.resume-section {
-  padding-top: 3rem;
-  padding-bottom: 3rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
   max-width: 75rem;
 }
 
@@ -10928,8 +10935,15 @@ section.resume-section .resume-section-content {
 
 /* Mobile adjustments */
 @media (max-width: 991.98px) {
+  .page-wrapper {
+    flex-direction: column;
+  }
   .sidebar {
-    display: none;
+    position: static;
+    width: 100%;
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid #dee2e6;
   }
   .main-content {
     padding-left: 1rem;

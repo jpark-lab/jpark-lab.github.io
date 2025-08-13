@@ -19,6 +19,7 @@
         <!-- Top Navigation-->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="topNav">
             <div class="container-fluid">
+                <a class="navbar-brand js-scroll-trigger" href="#page-top">Jiwoon Park</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     Menu
                     <span class="navbar-toggler-icon"></span>
@@ -26,9 +27,9 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#bio">Bio</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#news">News</a></li>
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#research">Research</a></li>
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#experience">Experience</a></li>
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#education">Education</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#publications">Publications</a></li>
                     </ul>
                     <div class="social-icons-top">
                         <a class="social-icon" href="https://www.linkedin.com/in/jiwoonpark/"><i class="fab fa-linkedin-in"></i></a>
@@ -123,27 +124,56 @@
             <!-- Education-->
             <section class="resume-section" id="education">
                 <div class="resume-section-content">
-                    <h2 class="mb-5">Education</h2>
-                    <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
-                        <div class="flex-grow-1">
-                            <h3 class="mb-0">Weill Cornell Graduate School of Medical Sciences, Cornell University, New York, NY</h3>
-                            <div class="subheading mb-3">Doctor of Philosophy (Ph.D.), in Physiology, Biophysics, and Systems Biology</div>
-                            <p>Advised by Drs. Charles M. Rice & Christopher E. Mason</p>
+                    <p>
+                        <a class="btn btn-light btn-sm" data-bs-toggle="collapse" href="#collapseBio" role="button" aria-expanded="false" aria-controls="collapseBio">
+                            Read Bio
+                        </a>
+                    </p>
+                    <div class="collapse" id="collapseBio">
+                        <div class="card card-body">
+                            Jiwoon Park, Ph.D. is a Postdoc at Weill Cornell Medicine and the founder of the Spatial Atlas of Human Anatomy (SAHA), an initiative to create the largest high-resolution, multi-omic maps of human organs. Her research bridges experimental and computational biology, integrating engineered organ models, spatial multi-omics, and AI to decode how cellular microenvironments drive health, disease progression, and therapeutic responses.
+                            <br><br>
+                            She develops both experimental and computational platforms for high-plex spatial profiling (spatial transcriptomics, proteomics, and imaging) and their integration with genomic, proteomic, and clinical datasets. She is particularly interested in how organ systems respond to genetic and environmental risk factors over time, and how these processes vary across individuals, tissues, and disease states—ranging from cancer to immune-mediated diseases.
+                            <br><br>
+                            During her Ph.D. at Cornell University and The Rockefeller University under Christopher Mason and Charles Rice, she developed the stem cell–derived multicellular liver model to study the PNPLA3 genetic variant, uncovering a novel injury-responsive stellate cell subtype with “epigenetic memory” that accelerates fibrosis.
+                            <!-- Keep this in the comment section because we will update this soon: Dr. Park completed her postdoctoral research jointly at Harvard Medical School in the lab of George Church and at Weill Cornell Medicine in the lab of Christopher Mason, where she developed high-resolution spatial workflows to investigate tissue microenvironments in cancer, inflammatory diseases, and astronaut health. -->
                         </div>
-                        <div class="flex-shrink-0"><span class="text-primary">July 2019 - May 2023 </span></div>
-                    </div>
-                    <div class="d-flex flex-column flex-md-row justify-content-between">
-                        <div class="flex-grow-1">
-                            <h3 class="mb-0">The Cooper Union for the Advancement of Science and Art, New York, NY</h3>
-                            <div class="subheading mb-3">Master of Engineering (M.Eng.), in Chemical Engineering</div>
-                            <p>Advised by Dr. Ruben Savizky</p>
-                            <div class="subheading mb-3">Bachelor of Engineering (B.Eng.), in Chemical Engineering (minor in Biomedical Engineering)</div>
-                            <p>Cum Laude, Full-tuition scholarship, Dean's List, Omega Chi Epsilon</p>
-                        </div>
-                        <div class="flex-shrink-0"><span class="text-primary">August 2013 - May 2017</span></div>
                     </div>
                 </div>
             </section>
+            <!-- News -->
+            <section class="resume-section" id="news">
+                <div class="resume-section-content">
+                    <p>
+                        <a class="btn btn-light btn-sm" data-bs-toggle="collapse" href="#collapseNews" role="button" aria-expanded="false" aria-controls="collapseNews">
+                            Show News
+                        </a>
+                    </p>
+                    <div class="collapse" id="collapseNews">
+                        <div class="card card-body">
+                            <!-- News content will be populated here -->
+                            <p>To be updated.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Research-->
+            <section class="resume-section" id="research">
+                <div class="resume-section-content">
+                    <h2 class="mb-5">Research Highlights</h2>
+                    <p class="lead mb-3"><em>I map the human body at single-cell resolution to predict how diseases start, progress, and respond to treatment—combining engineered organ models, cutting-edge multi-omics, and AI to transform precision medicine.</em></p>
+                    <p>My work develops models of human organ systems that can forecast disease risk, progression, and therapy response. Using advanced experimental platforms—such as stem cell–derived tissues and spatial multi-omics—I study how cells behave and interact across health and disease. From uncovering cell types that “remember” injury to mapping immune niches in cancer and therapy response, my research bridges cell biology and computational modeling. I lead the Spatial Atlas of Human Anatomy (SAHA, saha-project.org), a large-scale initiative generating the most comprehensive multi-omic maps of over 30 organs, enabling biomarker discovery, cross-organ comparisons, and AI-driven diagnostics.</p>
+                </div>
+            </section>
+            <!-- Publications and Resources -->
+            <section class="resume-section" id="publications">
+                <div class="resume-section-content">
+                    <h2 class="mb-5">Publications and Resources</h2>
+                    <!-- Publications and resources content will be populated here -->
+                    <p>To be updated; publications can be found in my <a href="https://scholar.google.com/citations?user=yZaLZcsAAAAJ&hl=en&oi=ao" target="_blank">Google Scholar</a>.</p>
+                </div>
+            </section>
+        </div>
         </div>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
