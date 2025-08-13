@@ -10841,18 +10841,22 @@ body {
   color: #6c757d;
 }
 
+
 .page-wrapper {
   display: flex;
 }
-
 .sidebar {
-  flex: 0 0 17rem; /* Do not grow, do not shrink, basis of 17rem */
+  position: fixed;
+  top: 56px; /* Start below the top nav */
+  left: 0;
+  width: 17rem;
   height: calc(100vh - 56px);
   padding: 1rem;
   background-color: #f8f9fa;
   border-right: 1px solid #dee2e6;
   position: sticky; /* Stick to the top of the viewport */
   top: 56px; /* Start below the top nav */
+
 }
 
 .sidebar .img-profile {
@@ -10869,8 +10873,8 @@ body {
 }
 
 .main-content {
-  flex-grow: 1; /* Grow to fill remaining space */
-  padding: 1rem;
+  padding-left: 18rem; /* Sidebar width + 1rem gutter */
+  padding-right: 1rem;
 }
 
 h1, .h1,
