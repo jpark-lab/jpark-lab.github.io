@@ -16,23 +16,42 @@
         <link href="css/styles.css" rel="stylesheet" />
     </head>
     <body id="page-top">
-        <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
-            <a class="navbar-brand js-scroll-trigger" href="#page-top">
-                <span class="d-block d-lg-none">Jiwoon Park</span>
-                <span class="d-none d-lg-block"><img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="assets/img/profile1.jpg" alt="..." /></span>
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#bio">Bio</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#research">Research</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#experience">Experience</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#education">Education</a></li>
-                </ul>
+        <!-- Top Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="topNav">
+            <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#bio">Bio</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#research">Research</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#experience">Experience</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#education">Education</a></li>
+                    </ul>
+                    <div class="social-icons-top">
+                        <a class="social-icon" href="https://www.linkedin.com/in/jiwoonpark/"><i class="fab fa-linkedin-in"></i></a>
+                        <a class="social-icon" href="https://github.com/jpark-lab"><i class="fab fa-github"></i></a>
+                        <a class="social-icon" href="https://twitter.com/JIWOONPARK_"><i class="fab fa-twitter"></i></a>
+                        <a class="social-icon" href="https://scholar.google.com/citations?hl=en&user=yZaLZcsAAAAJ"><i class="fab fa-google"></i></a>
+                    </div>
+                </div>
+            </div>
         </nav>
+        <!-- Side Bar-->
+        <aside class="sidebar">
+            <div class="text-center">
+                <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="assets/img/profile1.jpg" alt="..." />
+                <div class="sidebar-text">
+                    <p class="mb-1">Ph.D. in Physiology, Biophysics, and Systems Biology</p>
+                    <p class="mb-1">Postdoc at Weill Cornell Medicine & Harvard Medical School</p>
+                    <p class="mb-1">jip2007 at med.cornell.edu</p>
+                </div>
+            </div>
+        </aside>
         <!-- Page Content-->
-        <div class="container-fluid p-0">
+        <div class="main-content">
             <!-- Bio-->
             <section class="resume-section" id="bio">
                 <div class="resume-section-content">
@@ -44,12 +63,6 @@
                         New York, USA · jip2007 at med.cornell.edu
                     </div>
                     <div class="subheading mb-3"> Ph.D. in Physiology, Biophysics, and Systems Biology @ Weill Cornell Graduate School, Cornell University</div>
-                    <div class="social-icons">
-                        <a class="social-icon" href="https://www.linkedin.com/in/jiwoonpark/"><i class="fab fa-linkedin-in"></i></a>
-                        <a class="social-icon" href="https://github.com/jpark-lab"><i class="fab fa-github"></i></a>
-                        <a class="social-icon" href="https://twitter.com/JIWOONPARK_"><i class="fab fa-twitter"></i></a>
-                        <a class="social-icon" href="https://scholar.google.com/citations?hl=en&user=yZaLZcsAAAAJ"><i class="fab fa-google"></i></a>
-                    </div>
                     <p>
                         <a class="btn btn-light btn-sm" data-bs-toggle="collapse" href="#collapseBio" role="button" aria-expanded="false" aria-controls="collapseBio">
                             Bio
@@ -67,7 +80,6 @@
                     </div>
                 </div>
             </section>
-            <hr class="m-0" />
             <!-- Research-->
             <section class="resume-section" id="research">
                 <div class="resume-section-content">
@@ -76,7 +88,6 @@
                     <p>My work develops models of human organ systems that can forecast disease risk, progression, and therapy response. Using advanced experimental platforms—such as stem cell–derived tissues and spatial multi-omics—I study how cells behave and interact across health and disease. From uncovering cell types that “remember” injury to mapping immune niches in cancer and therapy response, my research bridges cell biology and computational modeling. I lead the Spatial Atlas of Human Anatomy (SAHA, saha-project.org), a large-scale initiative generating the most comprehensive multi-omic maps of over 30 organs, enabling biomarker discovery, cross-organ comparisons, and AI-driven diagnostics.</p>
                 </div>
             </section>
-            <hr class="m-0" />
             <!-- Experience-->
             <section class="resume-section" id="experience">
                 <div class="resume-section-content">
@@ -109,7 +120,6 @@
                     </div>
                 </div>
             </section>
-            <hr class="m-0" />
             <!-- Education-->
             <section class="resume-section" id="education">
                 <div class="resume-section-content">
