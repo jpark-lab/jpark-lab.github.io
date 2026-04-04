@@ -1,116 +1,775 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>Jiwoon Park</title>
-        <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
-        <!-- Font Awesome icons (free version)-->
-        <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
-        <!-- Google fonts-->
-        <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet" type="text/css" />
-        <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
-        <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="css/styles.css" rel="stylesheet" />
-    </head>
-    <body id="page-top">
-        <!-- Top Navigation-->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="topNav">
-            <div class="container-fluid">
-                <a class="navbar-brand js-scroll-trigger" href="#page-top">Jiwoon Park</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                    Menu
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#bio">Bio</a></li>
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#news">News</a></li>
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#research">Research</a></li>
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#publications">Publications</a></li>
-                    </ul>
-                    <div class="social-icons-top">
-                        <a class="social-icon" href="https://www.linkedin.com/in/jiwoonpark/"><i class="fab fa-linkedin-in"></i></a>
-                        <a class="social-icon" href="https://github.com/jpark-lab"><i class="fab fa-github"></i></a>
-                        <a class="social-icon" href="https://twitter.com/JIWOONPARK_"><i class="fab fa-twitter"></i></a>
-                        <a class="social-icon" href="https://scholar.google.com/citations?hl=en&user=yZaLZcsAAAAJ"><i class="fab fa-google"></i></a>
-                    </div>
-                </div>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Jiwoon Park</title>
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+  <!--
+    Fonts:
+    - Saira Extra Condensed: hero name / brand mark only
+    - DM Serif Display: section headings (readable, scholarly, elegant)
+    - Inter: body copy
+  -->
+  <link href="https://fonts.googleapis.com/css2?family=Saira+Extra+Condensed:wght@600;700&family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    /* =====================
+       DESIGN TOKENS
+    ===================== */
+    :root {
+      /* OKLCH-informed palette — tinted neutrals, no pure grays */
+      --clr-navy:      #1a2e4a;       /* primary / nav bg */
+      --clr-teal:      #2a8d8d;       /* accent */
+      --clr-bg:        #f8f7f5;       /* warm off-white, not pure #fafafa */
+      --clr-surface:   #ffffff;
+      --clr-text:      #262b33;       /* near-black with blue tint */
+      --clr-muted:     #586270;       /* tinted, not pure gray */
+      --clr-border:    #e2e6ec;
+      --clr-gold:      #b8841e;       /* slightly deeper for WCAG AA */
+
+      --font-brand:    'Saira Extra Condensed', sans-serif;   /* hero name only */
+      --font-head:     'DM Serif Display', serif;             /* all section headings */
+      --font-body:     'Inter', sans-serif;
+
+      --max-w:         900px;
+      --section-gap:   3rem;          /* tightened from 4rem */
+    }
+
+    /* =====================
+       BASE
+    ===================== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      font-size: 15.5px;
+      color: var(--clr-text);
+      background: var(--clr-bg);
+      line-height: 1.7;
+    }
+
+    h1, h2, h3, h4 { color: var(--clr-navy); line-height: 1.2; }
+    a { color: var(--clr-teal); text-decoration: none; }
+    a:hover { color: var(--clr-navy); text-decoration: underline; }
+
+    /* =====================
+       NAVBAR
+    ===================== */
+    #topNav {
+      background: var(--clr-navy);
+      padding: 0.55rem 1.5rem;
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.22);
+    }
+
+    #topNav .navbar-brand {
+      font-family: var(--font-brand);
+      font-weight: 700;
+      font-size: 1.45rem;
+      color: #fff !important;
+      letter-spacing: 0.04em;
+    }
+
+    #topNav .nav-link {
+      font-family: var(--font-body);
+      color: rgba(255,255,255,0.78) !important;
+      font-size: 0.83rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.35rem 0.65rem;
+      transition: color 0.18s;
+    }
+    #topNav .nav-link:hover,
+    #topNav .nav-link.active { color: #fff !important; }
+
+    .social-icons-top { display: flex; gap: 0.45rem; align-items: center; }
+    .social-icons-top a {
+      color: rgba(255,255,255,0.65);
+      font-size: 0.95rem;
+      width: 1.9rem; height: 1.9rem;
+      display: flex; align-items: center; justify-content: center;
+      border-radius: 50%;
+      transition: background 0.18s, color 0.18s;
+    }
+    .social-icons-top a:hover { background: var(--clr-teal); color: #fff; }
+
+    /* =====================
+       LAYOUT
+    ===================== */
+    .site-body { margin-top: 58px; }
+
+    .content-wrap {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 1.25rem;
+    }
+
+    section { padding: var(--section-gap) 0; }
+    section + section { border-top: 1px solid var(--clr-border); }
+
+    /* Alternating section tints for visual rhythm */
+    #news, #cv { background: var(--clr-surface); }
+
+    /* =====================
+       SECTION HEADINGS — DM Serif Display
+    ===================== */
+    .section-heading {
+      font-family: var(--font-head);
+      font-size: 1.85rem;
+      font-weight: 400; /* DM Serif Display is naturally weighty at 400 */
+      color: var(--clr-navy);
+      border-left: 3px solid var(--clr-teal);
+      padding-left: 0.65rem;
+      margin-bottom: 1.4rem;
+      letter-spacing: 0;
+    }
+
+    /* =====================
+       HERO
+    ===================== */
+    #hero {
+      background: linear-gradient(150deg, var(--clr-navy) 0%, #1e3d5c 100%);
+      color: #fff;
+      padding: 4.5rem 0 3.8rem;
+      text-align: center;
+    }
+
+    .hero-photo {
+      width: 118px; height: 118px;
+      border-radius: 50%;
+      border: 3px solid var(--clr-teal);
+      object-fit: cover;
+      margin-bottom: 1.2rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.32);
+    }
+
+    /* Hero name: Saira Extra Condensed is appropriate here as a display/logotype treatment */
+    #hero h1 {
+      font-family: var(--font-brand);
+      font-size: 3rem;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.2rem;
+    }
+
+    .hero-title {
+      font-family: var(--font-body);
+      font-size: 1.05rem;
+      font-weight: 400;
+      color: rgba(255,255,255,0.82);
+      margin-bottom: 0.25rem;
+    }
+
+    .hero-affil {
+      font-family: var(--font-body);
+      font-size: 0.88rem;
+      color: #7dd8d8; /* lighter teal against navy */
+      margin-bottom: 1rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+    }
+
+    .hero-tagline {
+      font-family: var(--font-head);
+      font-style: italic;
+      font-size: 1rem;
+      color: rgba(255,255,255,0.72);
+      max-width: 580px;
+      margin: 0 auto 1.4rem;
+      line-height: 1.65;
+    }
+
+    .hero-social { display: flex; justify-content: center; gap: 0.6rem; }
+    .hero-social a {
+      color: rgba(255,255,255,0.65);
+      background: rgba(255,255,255,0.08);
+      width: 2.1rem; height: 2.1rem;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.95rem;
+      transition: background 0.18s, color 0.18s;
+    }
+    .hero-social a:hover { background: var(--clr-teal); color: #fff; }
+
+    /* =====================
+       ABOUT
+    ===================== */
+    #about p {
+      max-width: 760px;
+      margin-bottom: 0.9rem;
+      color: var(--clr-text);
+    }
+    #about p:last-child { margin-bottom: 0; }
+
+    /* =====================
+       NEWS
+    ===================== */
+    .news-list { list-style: none; }
+    .news-list li {
+      display: flex;
+      gap: 1rem;
+      padding: 0.55rem 0;
+      border-bottom: 1px solid var(--clr-border);
+      align-items: flex-start;
+    }
+    .news-list li:last-child { border-bottom: none; }
+
+    .news-year {
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 0.82rem;
+      color: var(--clr-teal);
+      min-width: 3rem;
+      padding-top: 3px;
+      letter-spacing: 0.04em;
+    }
+
+    .news-text { flex: 1; font-size: 0.95rem; }
+
+    /* =====================
+       RESEARCH
+    ===================== */
+    .research-card {
+      background: var(--clr-surface);
+      border: 1px solid var(--clr-border);
+      border-top: 3px solid var(--clr-teal);
+      border-radius: 5px;
+      padding: 1.3rem 1.4rem;
+      height: 100%;
+      transition: box-shadow 0.2s;
+    }
+    .research-card:hover { box-shadow: 0 3px 16px rgba(26,46,74,0.09); }
+
+    .research-card h3 {
+      font-family: var(--font-head);
+      font-size: 1.12rem;
+      font-weight: 400;
+      color: var(--clr-navy);
+      margin-bottom: 0.5rem;
+    }
+
+    .research-card p {
+      font-size: 0.9rem;
+      color: var(--clr-muted);
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    /* =====================
+       PUBLICATIONS
+    ===================== */
+    .pub-entry {
+      padding: 0.85rem 0.6rem 0.85rem 0.75rem;
+      border-bottom: 1px solid var(--clr-border);
+      border-left: 3px solid transparent;
+      transition: border-color 0.18s, background 0.18s;
+      border-radius: 0 4px 4px 0;
+    }
+    .pub-entry:last-child { border-bottom: none; }
+    .pub-entry:hover {
+      border-left-color: var(--clr-teal);
+      background: rgba(42,141,141,0.04);
+    }
+
+    .pub-title {
+      font-size: 0.94rem;
+      font-weight: 600;
+      color: var(--clr-navy);
+      margin-bottom: 0.18rem;
+      line-height: 1.45;
+    }
+    .pub-title a {
+      color: var(--clr-navy);
+      text-decoration: none;
+    }
+    .pub-title a:hover {
+      color: var(--clr-teal);
+      text-decoration: underline;
+    }
+
+    .pub-meta {
+      font-size: 0.84rem;
+      color: var(--clr-muted);
+      margin-top: 0.1rem;
+    }
+
+    .badge-first {
+      display: inline;
+      font-size: 0.78rem;
+      font-style: italic;
+      font-weight: 400;
+      color: var(--clr-gold);
+      margin-left: 0.3rem;
+      vertical-align: baseline;
+      white-space: nowrap;
+    }
+    .badge-press {
+      display: inline-block;
+      font-size: 0.68rem;
+      font-weight: 600;
+      background: var(--clr-teal);
+      color: #fff;
+      padding: 0.15em 0.5em;
+      border-radius: 3px;
+      margin-right: 0.35rem;
+      vertical-align: middle;
+      white-space: nowrap;
+      letter-spacing: 0.03em;
+    }
+
+    .scholar-link {
+      margin-top: 1.25rem;
+      font-size: 0.92rem;
+    }
+    .scholar-link a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      color: var(--clr-teal);
+      font-weight: 600;
+    }
+    .scholar-link a:hover { color: var(--clr-navy); }
+
+    /* =====================
+       CV HIGHLIGHTS
+    ===================== */
+    .cv-sub {
+      font-family: var(--font-head);
+      font-size: 1.15rem;
+      font-weight: 400;
+      color: var(--clr-navy);
+      border-bottom: 1.5px solid var(--clr-teal);
+      padding-bottom: 0.25rem;
+      margin: 1.6rem 0 0.9rem;
+    }
+    .cv-sub:first-of-type { margin-top: 0; }
+
+    .cv-row {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 0.7rem;
+      align-items: flex-start;
+    }
+    .cv-year {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--clr-teal);
+      min-width: 4.8rem;
+      padding-top: 3px;
+      letter-spacing: 0.03em;
+      flex-shrink: 0;
+    }
+    .cv-detail { flex: 1; font-size: 0.92rem; line-height: 1.55; }
+    .cv-detail strong { color: var(--clr-navy); }
+    .cv-detail em { color: var(--clr-muted); font-size: 0.85rem; }
+
+    .awards-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 2rem;
+    }
+    @media (max-width: 560px) { .awards-grid { grid-template-columns: 1fr; } }
+
+    /* =====================
+       CONTACT — icons only, no visible text
+    ===================== */
+    #contact {
+      background: var(--clr-navy);
+      padding: var(--section-gap) 0;
+    }
+    #contact .section-heading { color: #fff; border-color: var(--clr-teal); }
+
+    .contact-icons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 0.5rem;
+    }
+    .contact-icons a {
+      width: 2.6rem; height: 2.6rem;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.75);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem;
+      transition: background 0.18s, color 0.18s;
+      text-decoration: none;
+    }
+    .contact-icons a:hover {
+      background: var(--clr-teal);
+      color: #fff;
+    }
+
+    /* =====================
+       FOOTER
+    ===================== */
+    footer {
+      background: #0e1b2c;
+      color: rgba(255,255,255,0.38);
+      text-align: center;
+      font-size: 0.78rem;
+      padding: 1rem;
+    }
+
+    /* =====================
+       RESPONSIVE
+    ===================== */
+    @media (max-width: 768px) {
+      #hero h1 { font-size: 2.4rem; }
+      .section-heading { font-size: 1.6rem; }
+      :root { --section-gap: 2.2rem; }
+    }
+    @media (max-width: 480px) {
+      #hero h1 { font-size: 2rem; }
+      #hero { padding: 3.5rem 0 3rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar navbar-expand-lg" id="topNav">
+    <div class="container-fluid" style="max-width:960px; margin:0 auto; padding:0 1rem;">
+      <a class="navbar-brand" href="#hero">Jiwoon Park</a>
+      <button class="navbar-toggler border-0 p-0" type="button"
+        data-bs-toggle="collapse" data-bs-target="#navLinks"
+        aria-controls="navLinks" aria-expanded="false" aria-label="Toggle navigation"
+        style="color:rgba(255,255,255,0.75); font-size:1.1rem;">
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navLinks">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#news">News</a></li>
+          <li class="nav-item"><a class="nav-link" href="#research">Research</a></li>
+          <li class="nav-item"><a class="nav-link" href="#publications">Publications</a></li>
+          <li class="nav-item"><a class="nav-link" href="#cv">CV</a></li>
+        </ul>
+        <div class="social-icons-top">
+          <a href="https://www.linkedin.com/in/jiwoonpark/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://github.com/jpark-lab" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          <a href="https://twitter.com/JIWOONPARK_" target="_blank" aria-label="Twitter/X"><i class="fab fa-twitter"></i></a>
+          <a href="https://scholar.google.com/citations?hl=en&user=yZaLZcsAAAAJ" target="_blank" aria-label="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="site-body">
+    <!-- ===== HERO ===== -->
+    <section id="hero">
+      <div class="content-wrap">
+        <img src="assets/img/profile1.jpg" alt="Jiwoon Park"
+          class="hero-photo" onerror="this.style.display='none'" />
+        <h1>Jiwoon Park, Ph.D.</h1>
+        <div class="hero-title">Postdoctoral Associate</div>
+        <div class="hero-affil">Weill Cornell Medicine &nbsp;&middot;&nbsp; Harvard Wyss Institute</div>
+        <p class="hero-tagline">"Mapping the human body at subcellular resolution to decode disease and transform precision medicine."</p>
+        <div class="hero-social">
+          <a href="https://www.linkedin.com/in/jiwoonpark/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://github.com/jpark-lab" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          <a href="https://twitter.com/JIWOONPARK_" target="_blank" aria-label="Twitter/X"><i class="fab fa-twitter"></i></a>
+          <a href="https://scholar.google.com/citations?hl=en&user=yZaLZcsAAAAJ" target="_blank" aria-label="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
+          <a href="mailto:jip2007@med.cornell.edu" aria-label="Email"><i class="fas fa-envelope"></i></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== ABOUT ===== -->
+    <section id="about">
+      <div class="content-wrap">
+        <h2 class="section-heading">About</h2>
+        <p>
+          Jiwoon Park, Ph.D. is a Postdoctoral Associate at Weill Cornell Medicine and the Harvard Wyss Institute,
+          and founder of the <a href="https://saha-project.org" target="_blank"><strong>Spatial Atlas of Human Anatomy (SAHA)</strong></a> — an initiative to generate
+          the largest high-resolution, multi-omic maps of human organs. Her research bridges experimental and
+          computational biology, integrating engineered organ models, spatial multi-omics, and AI to decode how
+          cellular microenvironments drive health, disease progression, and therapeutic responses.
+        </p>
+        <p>
+          She develops experimental and computational platforms for high-plex spatial profiling (spatial
+          transcriptomics, proteomics, and imaging) and their integration with genomic, proteomic, and clinical
+          datasets. She is particularly interested in how organ systems respond to genetic and environmental
+          risk factors over time, and how these processes vary across individuals, tissues, and disease
+          states — from cancer to immune-mediated diseases.
+        </p>
+        <p>
+          During her Ph.D. at Cornell University and The Rockefeller University (advisors: Christopher Mason
+          and Charles Rice), she developed a stem cell–derived multicellular liver model to study the PNPLA3
+          genetic variant, uncovering a novel injury-responsive stellate cell subtype with "epigenetic memory"
+          that accelerates fibrosis. She also conducts space biology research through NASA GeneLab, the
+          Inspiration4 mission, and the SOMA atlas project.
+        </p>
+      </div>
+    </section>
+
+    <!-- ===== NEWS ===== -->
+    <section id="news">
+      <div class="content-wrap">
+        <h2 class="section-heading">News</h2>
+        <ul class="news-list">
+          <li><span class="news-year">2026</span>
+            <span class="news-text">Elected to <strong>Sigma Xi</strong>, the scientific research honor society.</span></li>
+          <li><span class="news-year">2026</span>
+            <span class="news-text">Joined the <strong>Brains Accelerator Fellowship Program</strong>, Speculative Technologies.</span></li>
+          <li><span class="news-year">2025</span>
+            <span class="news-text"><strong>Orbital Launch Funding Winner</strong>, Boryoung Human In Space Challenge.</span></li>
+          <li><span class="news-year">2025</span>
+            <span class="news-text">Selected for <strong>Reviewers' Choice Abstracts</strong> at ASHG 2025.</span></li>
+          <li><span class="news-year">2025</span>
+            <span class="news-text">SAHA preprint published on bioRxiv: <em>The Spatial Atlas of Human Anatomy — A Multimodal Subcellular-Resolution Reference Across Human Organs</em>.</span></li>
+          <li><span class="news-year">2024</span>
+            <span class="news-text">Ten papers published in <em>Nature</em>, <em>Nature Communications</em>, and
+              <em>Cancer Cell</em> as part of the Inspiration4 / SOMA space biology atlas.</span></li>
+          <li><span class="news-year">2024</span>
+            <span class="news-text">Joined the <strong>NASA Spaceflight Technology, Applications, and Research (STAR) Program</strong>.</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===== RESEARCH ===== -->
+    <section id="research">
+      <div class="content-wrap">
+        <h2 class="section-heading">Research</h2>
+        <p style="color:var(--clr-muted); font-style:italic; margin-bottom:1.4rem; font-size:0.95rem;">
+          Combining engineered organ models, spatial multi-omics, and AI to map disease and transform precision medicine.
+        </p>
+        <div class="row g-3">
+          <div class="col-md-4">
+            <div class="research-card">
+              <h3>Spatial Multi-Omics &amp; Human Tissue Atlases</h3>
+              <p>Leading SAHA, a subcellular-resolution multi-omic initiative spanning 30+ human organs. Develops
+                integrated spatial transcriptomics, proteomics, and imaging workflows for biomarker discovery
+                and AI-driven diagnostics.</p>
             </div>
-        </nav>
-        <div class="page-wrapper">
-            <!-- Side Bar-->
-            <aside class="sidebar">
-                <div class="text-center">
-                    <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="assets/img/profile1.jpg" alt="..." />
-                    <div class="sidebar-text">
-                        <p class="mb-1">Ph.D. in Physiology, Biophysics, and Systems Biology</p>
-                        <p class="mb-1">Postdoc at Weill Cornell Medicine & Harvard Medical School</p>
-                        <p class="mb-1">jip2007 at med.cornell.edu</p>
-                    </div>
-                </div>
-            </aside>
-            <!-- Page Content-->
-            <div class="main-content">
-            <!-- Bio-->
-            <section class="resume-section" id="bio">
-                <div class="resume-section-content">
-                    <p>
-                        <a class="btn btn-light btn-sm" data-bs-toggle="collapse" href="#collapseBio" role="button" aria-expanded="false" aria-controls="collapseBio">
-                            Read Bio
-                        </a>
-                    </p>
-                    <div class="collapse" id="collapseBio">
-                        <div class="card card-body">
-                            Jiwoon Park, Ph.D. is a Postdoc at Weill Cornell Medicine and the founder of the Spatial Atlas of Human Anatomy (SAHA), an initiative to create the largest high-resolution, multi-omic maps of human organs. Her research bridges experimental and computational biology, integrating engineered organ models, spatial multi-omics, and AI to decode how cellular microenvironments drive health, disease progression, and therapeutic responses.
-                            <br><br>
-                            She develops both experimental and computational platforms for high-plex spatial profiling (spatial transcriptomics, proteomics, and imaging) and their integration with genomic, proteomic, and clinical datasets. She is particularly interested in how organ systems respond to genetic and environmental risk factors over time, and how these processes vary across individuals, tissues, and disease states—ranging from cancer to immune-mediated diseases.
-                            <br><br>
-                            During her Ph.D. at Cornell University and The Rockefeller University under Christopher Mason and Charles Rice, she developed the stem cell–derived multicellular liver model to study the PNPLA3 genetic variant, uncovering a novel injury-responsive stellate cell subtype with “epigenetic memory” that accelerates fibrosis.
-                            <!-- Keep this in the comment section because we will update this soon: Dr. Park completed her postdoctoral research jointly at Harvard Medical School in the lab of George Church and at Weill Cornell Medicine in the lab of Christopher Mason, where she developed high-resolution spatial workflows to investigate tissue microenvironments in cancer, inflammatory diseases, and astronaut health. -->
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <!-- News -->
-            <section class="resume-section" id="news">
-                <div class="resume-section-content">
-                    <p>
-                        <a class="btn btn-light btn-sm" data-bs-toggle="collapse" href="#collapseNews" role="button" aria-expanded="false" aria-controls="collapseNews">
-                            Show News
-                        </a>
-                    </p>
-                    <div class="collapse" id="collapseNews">
-                        <div class="card card-body">
-                            <!-- News content will be populated here -->
-                            <p>To be updated.</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <!-- Research-->
-            <section class="resume-section" id="research">
-                <div class="resume-section-content">
-                    <h2 class="mb-5">Research Highlights</h2>
-                    <p class="lead mb-3"><em>I map the human body at single-cell resolution to predict how diseases start, progress, and respond to treatment—combining engineered organ models, cutting-edge multi-omics, and AI to transform precision medicine.</em></p>
-                    <p>My work develops models of human organ systems that can forecast disease risk, progression, and therapy response. Using advanced experimental platforms—such as stem cell–derived tissues and spatial multi-omics—I study how cells behave and interact across health and disease. From uncovering cell types that “remember” injury to mapping immune niches in cancer and therapy response, my research bridges cell biology and computational modeling. I lead the Spatial Atlas of Human Anatomy (SAHA, saha-project.org), a large-scale initiative generating the most comprehensive multi-omic maps of over 30 organs, enabling biomarker discovery, cross-organ comparisons, and AI-driven diagnostics.</p>
-                </div>
-            </section>
-            <!-- Publications and Resources -->
-            <section class="resume-section" id="publications">
-                <div class="resume-section-content">
-                    <h2 class="mb-5">Publications and Resources</h2>
-                    <!-- Publications and resources content will be populated here -->
-                    <p>To be updated; publications can be found in my <a href="https://scholar.google.com/citations?user=yZaLZcsAAAAJ&hl=en&oi=ao" target="_blank">Google Scholar</a>.</p>
-                </div>
-            </section>
+          </div>
+          <div class="col-md-4">
+            <div class="research-card">
+              <h3>Disease Microenvironments</h3>
+              <p>Dissecting cellular niches in liver fibrosis (PNPLA3/STAT3), pancreatic cancer (KRAS),
+                and inflammatory bowel disease. Uncovering epigenetic memory in injury-responsive
+                stellate cells and immune-stromal crosstalk.</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="research-card">
+              <h3>Space Biology &amp; Extreme Environments</h3>
+              <p>Profiling molecular adaptations in astronauts via the Inspiration4 mission and SOMA atlas.
+                Characterizing spaceflight-induced changes across skin, immune, and multi-organ systems
+                through NASA GeneLab and SOMA.</p>
+            </div>
+          </div>
         </div>
+      </div>
+    </section>
+
+    <!-- ===== PUBLICATIONS ===== -->
+    <section id="publications">
+      <div class="content-wrap">
+        <h2 class="section-heading">Publications</h2>
+        <p style="color:var(--clr-muted); font-size:0.88rem; margin-bottom:1.3rem;">
+          Selected publications. <em style="color:var(--clr-gold);">first author</em> marks first-authorship.
+        </p>
+
+        <!-- In revision / in review -->
+        <div class="pub-entry">
+          <div class="pub-title">
+            <span class="badge-press">In Revision</span>
+            <a href="https://doi.org/10.1101/2025.06.16.658716" target="_blank">
+              The Spatial Atlas of Human Anatomy (SAHA): A Multimodal Subcellular-Resolution Reference Across Human Organs
+            </a>
+            <span class="badge-first">first author</span>
+          </div>
+          <div class="pub-meta"><strong>Park J</strong> et al. &nbsp;&middot;&nbsp; (2025) &nbsp;&middot;&nbsp;
+            <a href="https://doi.org/10.1101/2025.06.16.658716" target="_blank" style="font-size:0.8rem;">doi:10.1101/2025.06.16.658716</a>
+          </div>
         </div>
-        <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
-    </body>
+
+        <!-- Published — 5 most recent + first-authored -->
+        <div class="pub-entry">
+          <div class="pub-title">
+            <a href="https://doi.org/10.1038/s41587-025-02811-9" target="_blank">
+              Standardized metrics for assessment and reproducibility of imaging-based spatial transcriptomics datasets
+            </a>
+            <span class="badge-first">co-first author</span>
+          </div>
+          <div class="pub-meta">Plummer J, Segato Dezem F, Cook D, <strong>Park J</strong> et al. &nbsp;&middot;&nbsp; <em>Nature Biotechnology</em> (2025) &nbsp;&middot;&nbsp;
+            <a href="https://doi.org/10.1038/s41587-025-02811-9" target="_blank" style="font-size:0.8rem;">doi:10.1038/s41587-025-02811-9</a>
+          </div>
+        </div>
+
+        <div class="pub-entry">
+          <div class="pub-title">
+            <a href="https://doi.org/10.1016/j.ccell.2024.08.002" target="_blank">
+              Distinct clinical outcomes and biological features of specific KRAS mutants in human pancreatic cancer
+            </a>
+            <span class="badge-first">second author</span>
+          </div>
+          <div class="pub-meta">McIntyre CA, Grimont A et al. &nbsp;&middot;&nbsp; <em>Cancer Cell</em> 42, 1614–1629 (2024) &nbsp;&middot;&nbsp;
+            <a href="https://doi.org/10.1016/j.ccell.2024.08.002" target="_blank" style="font-size:0.8rem;">doi:10.1016/j.ccell.2024.08.002</a>
+          </div>
+        </div>
+
+        <div class="pub-entry">
+          <div class="pub-title">
+            <a href="https://doi.org/10.1038/s41586-024-07639-y" target="_blank">
+              The Space Omics and Medical Atlas (SOMA) and international astronaut biobank
+            </a>
+          </div>
+          <div class="pub-meta">Overbey EG et al. &nbsp;&middot;&nbsp; <em>Nature</em> 632, 1145–1154 (2024) &nbsp;&middot;&nbsp;
+            <a href="https://doi.org/10.1038/s41586-024-07639-y" target="_blank" style="font-size:0.8rem;">doi:10.1038/s41586-024-07639-y</a>
+          </div>
+        </div>
+
+        <div class="pub-entry">
+          <div class="pub-title">
+            <a href="https://doi.org/10.1038/s41467-024-48625-2" target="_blank">
+              Spatial multi-omics of human skin reveals KRAS and inflammatory responses to spaceflight
+            </a>
+            <span class="badge-first">first author</span>
+          </div>
+          <div class="pub-meta"><strong>Park J</strong> et al. &nbsp;&middot;&nbsp; <em>Nature Communications</em> (2024) &nbsp;&middot;&nbsp;
+            <a href="https://doi.org/10.1038/s41467-024-48625-2" target="_blank" style="font-size:0.8rem;">doi:10.1038/s41467-024-48625-2</a>
+          </div>
+        </div>
+
+        <div class="pub-entry">
+          <div class="pub-title">
+            <a href="https://doi.org/10.1016/j.jhep.2022.08.022" target="_blank">
+              IL-6/STAT3 axis dictates the PNPLA3-mediated susceptibility to non-alcoholic fatty liver disease
+            </a>
+            <span class="badge-first">first author</span>
+          </div>
+          <div class="pub-meta"><strong>Park J</strong> et al. &nbsp;&middot;&nbsp; <em>Journal of Hepatology</em> 78(1), 45–56 (2023) &nbsp;&middot;&nbsp;
+            <a href="https://doi.org/10.1016/j.jhep.2022.08.022" target="_blank" style="font-size:0.8rem;">doi:10.1016/j.jhep.2022.08.022</a>
+          </div>
+        </div>
+
+        <div class="pub-entry">
+          <div class="pub-title">
+            <a href="https://doi.org/10.1016/j.xcrm.2022.100522" target="_blank">
+              System-wide transcriptome damage and tissue identity loss in COVID-19 patients
+            </a>
+            <span class="badge-first">first author</span>
+          </div>
+          <div class="pub-meta"><strong>Park J</strong> et al. &nbsp;&middot;&nbsp; <em>Cell Reports Medicine</em> 3(2), 100522 (2022) &nbsp;&middot;&nbsp;
+            <a href="https://doi.org/10.1016/j.xcrm.2022.100522" target="_blank" style="font-size:0.8rem;">doi:10.1016/j.xcrm.2022.100522</a>
+          </div>
+        </div>
+
+        <div class="scholar-link">
+          <a href="https://scholar.google.com/citations?hl=en&user=yZaLZcsAAAAJ" target="_blank">
+            <i class="fas fa-graduation-cap"></i> View all publications on Google Scholar
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CV HIGHLIGHTS ===== -->
+    <section id="cv">
+      <div class="content-wrap">
+        <h2 class="section-heading">CV Highlights</h2>
+
+        <div class="cv-sub">Education</div>
+        <div class="cv-row">
+          <span class="cv-year">2019–2023</span>
+          <span class="cv-detail">
+            <strong>Ph.D., Physiology, Biophysics &amp; Systems Biology</strong><br>
+            <em>Cornell University / The Rockefeller University &mdash; Advisors: Christopher Mason, Charles Rice</em>
+          </span>
+        </div>
+        <div class="cv-row">
+          <span class="cv-year">2013–2017</span>
+          <span class="cv-detail">
+            <strong>M.Eng. + B.Eng., Chemical Engineering</strong><br>
+            <em>The Cooper Union for the Advancement of Science and Art &mdash; Advisor: Ruben Savizky</em>
+          </span>
+        </div>
+
+
+<div class="cv-sub">Selected Awards &amp; Fellowships</div>
+        <div class="awards-grid">
+          <div>
+            <div class="cv-row"><span class="cv-year">2026</span><span class="cv-detail">Elected Member, <strong>Sigma Xi</strong>, The Scientific Research Honor Society</span></div>
+            <div class="cv-row"><span class="cv-year">2026</span><span class="cv-detail"><strong>Brains Accelerator Fellowship Program</strong>, Speculative Technologies</span></div>
+            <div class="cv-row"><span class="cv-year">2025</span><span class="cv-detail"><strong>Orbital Launch Funding Winner</strong>, Boryoung Human In Space Challenge</span></div>
+            <div class="cv-row"><span class="cv-year">2025</span><span class="cv-detail">Reviewers' Choice Abstracts, <strong>ASHG 2025</strong></span></div>
+            <div class="cv-row"><span class="cv-year">2025</span><span class="cv-detail"><strong>K Early Career Academic Training (KECAT) Program</strong>, Weill Cornell Medicine</span></div>
+          </div>
+          <div>
+            <div class="cv-row"><span class="cv-year">2024–25</span><span class="cv-detail"><strong>Life Sciences Technology Innovation Fellowship</strong>, Cornell University</span></div>
+            <div class="cv-row"><span class="cv-year">2023–25</span><span class="cv-detail">Postdoctoral Fellowship, Bumrungrad International Hospital</span></div>
+            <div class="cv-row"><span class="cv-year">2023–24</span><span class="cv-detail"><strong>NASA Spaceflight Technology, Applications, and Research (STAR) Program</strong></span></div>
+            <div class="cv-row"><span class="cv-year">2022</span><span class="cv-detail"><strong>MOGAM Science Fellowship</strong></span></div>
+            <div class="cv-row"><span class="cv-year">2016</span><span class="cv-detail">William H. Nichols Fellowship, American Chemical Society</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CONTACT — icons only ===== -->
+    <section id="contact">
+      <div class="content-wrap">
+        <h2 class="section-heading">Contact</h2>
+        <div class="contact-icons">
+          <a href="mailto:jip2007@med.cornell.edu" aria-label="Email"><i class="fas fa-envelope"></i></a>
+          <a href="https://www.linkedin.com/in/jiwoonpark/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://github.com/jpark-lab" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          <a href="https://twitter.com/JIWOONPARK_" target="_blank" aria-label="Twitter/X"><i class="fab fa-twitter"></i></a>
+          <a href="https://scholar.google.com/citations?hl=en&user=yZaLZcsAAAAJ" target="_blank" aria-label="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
+        </div>
+      </div>
+    </section>
+
+  </div><!-- /.site-body -->
+
+  <footer>
+    Jiwoon Park, Ph.D. &nbsp;&middot;&nbsp; Postdoctoral Associate, Weill Cornell Medicine
+    
+  </footer>
+
+  <!-- Bootstrap 5 JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    // Scrollspy + smooth-scroll
+    (function () {
+      const sections = document.querySelectorAll('section[id]');
+      const links    = document.querySelectorAll('#topNav .nav-link');
+      const NAV_H    = 58;
+
+      function highlight() {
+        let active = '';
+        sections.forEach(s => {
+          if (window.scrollY >= s.offsetTop - NAV_H - 10) active = s.id;
+        });
+        links.forEach(l => {
+          l.classList.toggle('active', l.getAttribute('href') === '#' + active);
+        });
+      }
+
+      window.addEventListener('scroll', highlight, { passive: true });
+      highlight();
+
+      links.forEach(l => {
+        l.addEventListener('click', e => {
+          const target = document.querySelector(l.getAttribute('href'));
+          if (!target) return;
+          e.preventDefault();
+          window.scrollTo({ top: target.offsetTop - NAV_H, behavior: 'smooth' });
+          const col = document.querySelector('#navLinks');
+          if (col?.classList.contains('show')) bootstrap.Collapse.getInstance(col)?.hide();
+        });
+      });
+    })();
+  </script>
+</body>
 </html>
